@@ -20,6 +20,7 @@ package org.apache.hudi.metrics.prometheus;
 
 import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
+import java.security.SecureRandom;
 import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.hudi.metrics.MetricsReporter;
 
@@ -76,7 +77,7 @@ public class PushGatewayMetricsReporter extends MetricsReporter {
 
   private String getJobName() {
     if (randomSuffix) {
-      Random random = new Random();
+      Random random = new SecureRandom();
       return configuredJobName + random.nextLong();
     }
     return configuredJobName;

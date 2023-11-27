@@ -18,6 +18,7 @@
 
 package org.apache.hudi.integ.testsuite.generator;
 
+import java.security.SecureRandom;
 import org.apache.hudi.common.util.collection.Pair;
 
 import org.apache.avro.Schema;
@@ -50,7 +51,7 @@ public class GenericRecordFullPayloadGenerator implements Serializable {
   public static final int DEFAULT_PAYLOAD_SIZE = 1024 * 10; // 10 KB
   public static final int DEFAULT_NUM_DATE_PARTITIONS = 50;
   public static final String DEFAULT_HOODIE_IS_DELETED_COL = "_hoodie_is_deleted";
-  protected final Random random = new Random();
+  protected final Random random = new SecureRandom();
   // The source schema used to generate a payload
   private final transient Schema baseSchema;
   // Used to validate a generic record
