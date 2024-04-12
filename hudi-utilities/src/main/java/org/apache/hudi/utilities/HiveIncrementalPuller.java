@@ -247,7 +247,7 @@ public class HiveIncrementalPuller {
       stmt = conn.createStatement();
       resultSet = stmt.executeQuery("describe formatted `" + db + "." + table + "`");
       while (resultSet.next()) {
-        if (resultSet.getString(1).trim().equals("Location:")) {
+        if ("Location:".equals(resultSet.getString(1).trim())) {
           LOG.info("Inferred table location for " + db + "." + table + " as " + resultSet.getString(2));
           return resultSet.getString(2);
         }

@@ -363,9 +363,9 @@ public class HiveSchemaUtil {
     newType = newType.toLowerCase();
     if (prevType.equals(newType)) {
       return true;
-    } else if (prevType.equalsIgnoreCase("int") && newType.equalsIgnoreCase("bigint")) {
+    } else if ("int".equalsIgnoreCase(prevType) && "bigint".equalsIgnoreCase(newType)) {
       return true;
-    } else if (prevType.equalsIgnoreCase("float") && newType.equalsIgnoreCase("double")) {
+    } else if ("float".equalsIgnoreCase(prevType) && "double".equalsIgnoreCase(newType)) {
       return true;
     } else {
       return prevType.contains("struct") && newType.toLowerCase().contains("struct");

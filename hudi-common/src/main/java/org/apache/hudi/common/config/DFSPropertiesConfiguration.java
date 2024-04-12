@@ -102,7 +102,7 @@ public class DFSPropertiesConfiguration {
     try {
       String line;
       while ((line = reader.readLine()) != null) {
-        if (line.startsWith("#") || line.equals("") || !line.contains("=")) {
+        if (line.startsWith("#") || "".equals(line) || !line.contains("=")) {
           continue;
         }
         String[] split = splitProperty(line);

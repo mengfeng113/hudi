@@ -135,7 +135,7 @@ public class HoodieSnapshotExporter {
     }
     LOG.info(String.format("The job needs to export %d partitions.", partitions.size()));
 
-    if (cfg.outputFormat.equals(OutputFormatValidator.HUDI)) {
+    if (OutputFormatValidator.HUDI.equals(cfg.outputFormat)) {
       exportAsHudi(jsc, cfg, partitions, latestCommitTimestamp);
     } else {
       exportAsNonHudi(jsc, cfg, partitions, latestCommitTimestamp);

@@ -117,7 +117,7 @@ public class HoodieDeltaStreamer implements Serializable {
     // Resolving the properties first in a consistent way
     if (props.isPresent()) {
       this.properties = props.get();
-    } else if (cfg.propsFilePath.equals(Config.DEFAULT_DFS_SOURCE_PROPERTIES)) {
+    } else if (Config.DEFAULT_DFS_SOURCE_PROPERTIES.equals(cfg.propsFilePath)) {
       this.properties = UtilHelpers.getConfig(cfg.configs).getConfig();
     } else {
       this.properties = UtilHelpers.readConfig(
