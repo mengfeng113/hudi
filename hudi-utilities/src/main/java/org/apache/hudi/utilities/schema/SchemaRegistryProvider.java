@@ -18,6 +18,8 @@
 
 package org.apache.hudi.utilities.schema;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import org.apache.hudi.DataSourceUtils;
 import org.apache.hudi.common.config.TypedProperties;
 import org.apache.hudi.exception.HoodieIOException;
@@ -49,7 +51,7 @@ public class SchemaRegistryProvider extends SchemaProvider {
   }
 
   private static String fetchSchemaFromRegistry(String registryUrl) throws IOException {
-    URL registry = new URL(registryUrl);
+    URL registry = Urls.create(registryUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
     ObjectMapper mapper = new ObjectMapper();
     JsonNode node = mapper.readTree(registry.openStream());
     return node.get("schema").asText();
