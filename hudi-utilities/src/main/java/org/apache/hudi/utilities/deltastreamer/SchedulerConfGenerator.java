@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities.deltastreamer;
 
+import java.nio.file.Files;
 import org.apache.hudi.async.AsyncCompactService;
 import org.apache.hudi.common.model.HoodieTableType;
 import org.apache.hudi.common.util.Option;
@@ -105,7 +106,7 @@ public class SchedulerConfGenerator {
    */
   private static String generateAndStoreConfig(Integer deltaSyncWeight, Integer compactionWeight,
       Integer deltaSyncMinShare, Integer compactionMinShare) throws IOException {
-    File tempConfigFile = File.createTempFile(UUID.randomUUID().toString(), ".xml");
+    File tempConfigFile = Files.createTempFile(UUID.randomUUID().toString(), ".xml").toFile();
     BufferedWriter bw = new BufferedWriter(new FileWriter(tempConfigFile));
     bw.write(generateConfig(deltaSyncWeight, compactionWeight, deltaSyncMinShare, compactionMinShare));
     bw.close();
