@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.hudi.client.common.HoodieSparkEngineContext;
 import org.apache.hudi.common.engine.HoodieEngineContext;
 import org.apache.hudi.common.util.ValidationUtils;
@@ -113,7 +114,7 @@ public class HoodieWithTimelineServer implements Serializable {
       try (BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
         StringBuilder result = new StringBuilder();
         String line;
-        while ((line = rd.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(rd, 5_000_000)) != null) {
           result.append(line);
         }
         System.out.println("Got result (" + result + ")");
