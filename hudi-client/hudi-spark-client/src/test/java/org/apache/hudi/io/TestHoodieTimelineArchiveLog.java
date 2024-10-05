@@ -18,6 +18,7 @@
 
 package org.apache.hudi.io;
 
+import java.security.SecureRandom;
 import org.apache.hudi.avro.model.HoodieActionInstant;
 import org.apache.hudi.avro.model.HoodieCleanMetadata;
 import org.apache.hudi.avro.model.HoodieCleanerPlan;
@@ -511,7 +512,7 @@ public class TestHoodieTimelineArchiveLog extends HoodieClientTestHarness {
     } else {
       HoodieCleanStat cleanStats = new HoodieCleanStat(
           HoodieCleaningPolicy.KEEP_LATEST_FILE_VERSIONS,
-          HoodieTestUtils.DEFAULT_PARTITION_PATHS[new Random().nextInt(HoodieTestUtils.DEFAULT_PARTITION_PATHS.length)],
+          HoodieTestUtils.DEFAULT_PARTITION_PATHS[new SecureRandom().nextInt(HoodieTestUtils.DEFAULT_PARTITION_PATHS.length)],
           Collections.emptyList(),
           Collections.emptyList(),
           Collections.emptyList(),

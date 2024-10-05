@@ -18,6 +18,7 @@
 
 package org.apache.hudi.common.table.timeline;
 
+import java.security.SecureRandom;
 import org.apache.hudi.common.table.HoodieTableMetaClient;
 import org.apache.hudi.common.table.timeline.HoodieInstant.State;
 import org.apache.hudi.common.table.timeline.versioning.TimelineLayoutVersion;
@@ -214,7 +215,7 @@ public class TestHoodieActiveTimeline extends HoodieCommonTestHarness {
                     HoodieTimeline.SAVEPOINT_ACTION, HoodieTimeline.ROLLBACK_ACTION));
 
     // Get some random Instants
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     Set<String> randomInstants = sup.get().filter(i -> rand.nextBoolean())
                                           .map(HoodieInstant::getAction).collect(Collectors.toSet());
     checkTimeline.accept(timeline.getTimelineOfActions(randomInstants), randomInstants);
