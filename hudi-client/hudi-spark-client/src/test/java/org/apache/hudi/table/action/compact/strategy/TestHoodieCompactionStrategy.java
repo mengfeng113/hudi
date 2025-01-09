@@ -18,6 +18,7 @@
 
 package org.apache.hudi.table.action.compact.strategy;
 
+import java.security.SecureRandom;
 import org.apache.hudi.avro.model.HoodieCompactionOperation;
 import org.apache.hudi.common.model.BaseFile;
 import org.apache.hudi.common.model.FileSlice;
@@ -48,7 +49,7 @@ public class TestHoodieCompactionStrategy {
 
   private static final long MB = 1024 * 1024L;
   private String[] partitionPaths = {"2017/01/01", "2017/01/02", "2017/01/03"};
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   @Test
   public void testUnBounded() {

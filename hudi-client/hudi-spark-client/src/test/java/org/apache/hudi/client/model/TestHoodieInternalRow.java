@@ -18,6 +18,7 @@
 
 package org.apache.hudi.client.model;
 
+import java.security.SecureRandom;
 import org.apache.spark.sql.catalyst.InternalRow;
 import org.apache.spark.sql.catalyst.expressions.GenericInternalRow;
 import org.apache.spark.sql.types.DataTypes;
@@ -37,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class TestHoodieInternalRow {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
   private static final int INTEGER_INDEX = 5;
   private static final int STRING_INDEX = 6;
   private static final int BOOLEAN_INDEX = 7;

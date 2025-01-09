@@ -18,6 +18,7 @@
 
 package org.apache.hudi.index;
 
+import java.security.SecureRandom;
 import org.apache.hudi.client.WriteStatus;
 import org.apache.hudi.common.fs.ConsistencyGuardConfig;
 import org.apache.hudi.common.model.EmptyHoodieRecordPayload;
@@ -70,7 +71,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class TestHoodieIndex extends HoodieClientTestHarness {
 
   private static final Schema SCHEMA = getSchemaFromResource(TestHoodieIndex.class, "/exampleSchema.avsc", true);
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
   private IndexType indexType;
   private HoodieIndex index;
   private HoodieWriteConfig config;

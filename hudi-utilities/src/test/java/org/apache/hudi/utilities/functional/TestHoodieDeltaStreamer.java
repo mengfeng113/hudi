@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities.functional;
 
+import java.security.SecureRandom;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.common.config.DFSPropertiesConfiguration;
 import org.apache.hudi.common.config.TypedProperties;
@@ -107,7 +108,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class TestHoodieDeltaStreamer extends UtilitiesTestBase {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
   private static final String PROPS_FILENAME_TEST_SOURCE = "test-source.properties";
   public static final String PROPS_FILENAME_TEST_SOURCE1 = "test-source1.properties";
   public static final String PROPS_INVALID_HIVE_SYNC_TEST_SOURCE1 = "test-invalid-hive-sync-source1.properties";

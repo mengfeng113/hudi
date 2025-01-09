@@ -18,6 +18,7 @@
 
 package org.apache.hudi.io;
 
+import java.security.SecureRandom;
 import org.apache.hudi.client.HoodieInternalWriteStatus;
 import org.apache.hudi.common.model.HoodieRecord;
 import org.apache.hudi.common.model.HoodieWriteStat;
@@ -55,7 +56,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @SuppressWarnings("checkstyle:LineLength")
 public class TestHoodieRowCreateHandle extends HoodieClientTestHarness {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   @BeforeEach
   public void setUp() throws Exception {

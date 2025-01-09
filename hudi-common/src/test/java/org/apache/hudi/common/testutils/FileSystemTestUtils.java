@@ -18,6 +18,7 @@
 
 package org.apache.hudi.common.testutils;
 
+import java.security.SecureRandom;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.LocatedFileStatus;
@@ -44,7 +45,7 @@ public class FileSystemTestUtils {
   public static final String FORWARD_SLASH = "/";
   public static final String FILE_SCHEME = "file";
   public static final String COLON = ":";
-  public static final Random RANDOM = new Random();
+  public static final Random RANDOM = new SecureRandom();
 
   public static Path getRandomOuterInMemPath() {
     String randomFileName = UUID.randomUUID().toString();
