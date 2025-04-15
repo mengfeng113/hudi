@@ -18,6 +18,7 @@
 
 package org.apache.hudi.metrics;
 
+import java.security.SecureRandom;
 import org.apache.hudi.common.model.HoodieCommitMetadata;
 import org.apache.hudi.config.HoodieWriteConfig;
 
@@ -54,7 +55,7 @@ public class TestHoodieMetrics {
 
   @Test
   public void testTimerCtx() throws InterruptedException {
-    Random rand = new Random();
+    Random rand = new SecureRandom();
 
     // Index metrics
     Timer.Context timer = metrics.getIndexCtx();

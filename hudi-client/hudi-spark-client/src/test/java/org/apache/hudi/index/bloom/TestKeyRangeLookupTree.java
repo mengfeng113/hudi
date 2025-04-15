@@ -18,6 +18,7 @@
 
 package org.apache.hudi.index.bloom;
 
+import java.security.SecureRandom;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -34,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class TestKeyRangeLookupTree {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
   private KeyRangeLookupTree keyRangeLookupTree;
   private Map<String, HashSet<String>> expectedMatches;
 

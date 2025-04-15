@@ -18,6 +18,7 @@
 
 package org.apache.hudi.client;
 
+import java.security.SecureRandom;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.avro.model.HoodieFileStatus;
 import org.apache.hudi.client.bootstrap.BootstrapMode;
@@ -526,7 +527,7 @@ public class TestBootstrap extends HoodieClientTestBase {
 
   public static class TestRandomBootstapModeSelector extends BootstrapModeSelector {
 
-    private int currIdx = new Random().nextInt(2);
+    private int currIdx = new SecureRandom().nextInt(2);
 
     public TestRandomBootstapModeSelector(HoodieWriteConfig writeConfig) {
       super(writeConfig);
