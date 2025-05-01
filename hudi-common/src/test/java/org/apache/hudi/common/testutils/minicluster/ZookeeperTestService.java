@@ -18,6 +18,7 @@
 
 package org.apache.hudi.common.testutils.minicluster;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileUtil;
 import org.apache.log4j.LogManager;
@@ -206,7 +207,7 @@ public class ZookeeperTestService {
 
           Reader isr = new InputStreamReader(sock.getInputStream());
           reader = new BufferedReader(isr);
-          String line = reader.readLine();
+          String line = BoundedLineReader.readLine(reader, 5_000_000);
           if (line != null && line.startsWith("Zookeeper version:")) {
             return true;
           }
