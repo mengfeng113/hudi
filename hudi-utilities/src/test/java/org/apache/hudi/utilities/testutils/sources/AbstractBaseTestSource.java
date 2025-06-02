@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities.testutils.sources;
 
+import java.nio.file.Files;
 import org.apache.hudi.common.config.TypedProperties;
 import org.apache.hudi.common.model.HoodieRecord;
 import org.apache.hudi.common.testutils.HoodieTestDataGenerator;
@@ -59,7 +60,7 @@ public abstract class AbstractBaseTestSource extends AvroSource {
       boolean useRocksForTestDataGenKeys = props.getBoolean(SourceConfigs.USE_ROCKSDB_FOR_TEST_DATAGEN_KEYS,
           SourceConfigs.DEFAULT_USE_ROCKSDB_FOR_TEST_DATAGEN_KEYS);
       String baseStoreDir = props.getString(SourceConfigs.ROCKSDB_BASE_DIR_FOR_TEST_DATAGEN_KEYS,
-          File.createTempFile("test_data_gen", ".keys").getParent()) + "/" + partition;
+          Files.createTempFile("test_data_gen", ".keys").toFile().getParent()) + "/" + partition;
       LOG.info("useRocksForTestDataGenKeys=" + useRocksForTestDataGenKeys + ", BaseStoreDir=" + baseStoreDir);
       dataGeneratorMap.put(partition, new HoodieTestDataGenerator(HoodieTestDataGenerator.DEFAULT_PARTITION_PATHS,
           useRocksForTestDataGenKeys ? new RocksDBBasedMap<>(baseStoreDir) : new HashMap<>()));
