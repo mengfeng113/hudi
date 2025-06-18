@@ -18,6 +18,7 @@
 
 package org.apache.hudi.cli.commands;
 
+import io.github.pixee.security.ObjectInputFilters;
 import org.apache.hudi.avro.model.HoodieCompactionOperation;
 import org.apache.hudi.avro.model.HoodieCompactionPlan;
 import org.apache.hudi.cli.HoodieCLI;
@@ -390,6 +391,7 @@ public class CompactionCommand implements CommandMarker {
     Path inputPath = new Path(inputP);
     FSDataInputStream fsDataInputStream = fs.open(inputPath);
     ObjectInputStream in = new ObjectInputStream(fsDataInputStream);
+    ObjectInputFilters.enableObjectFilterIfUnprotected(in);
     try {
       T result = (T) in.readObject();
       LOG.info("Result : " + result);

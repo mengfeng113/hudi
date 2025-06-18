@@ -140,6 +140,7 @@
     <presto.bundle.bootstrap.scope>compile</presto.bundle.bootstrap.scope>
     <presto.bundle.bootstrap.shade.prefix>org.apache.hudi.</presto.bundle.bootstrap.shade.prefix>
     <shadeSources>true</shadeSources>
+    <versions.java-security-toolkit>1.2.1</versions.java-security-toolkit>
   </properties>
 
   <scm>
@@ -919,6 +920,11 @@
         <artifactId>kryo</artifactId>
         <version>4.0.0</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-security-toolkit</artifactId>
+        <version>${versions.java-security-toolkit}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
