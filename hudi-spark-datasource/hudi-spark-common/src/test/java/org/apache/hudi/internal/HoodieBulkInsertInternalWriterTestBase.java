@@ -18,6 +18,7 @@
 
 package org.apache.hudi.internal;
 
+import java.security.SecureRandom;
 import org.apache.hudi.client.HoodieInternalWriteStatus;
 import org.apache.hudi.common.model.HoodieRecord;
 import org.apache.hudi.common.model.HoodieWriteStat;
@@ -44,7 +45,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class HoodieBulkInsertInternalWriterTestBase extends HoodieClientTestHarness {
 
-  protected static final Random RANDOM = new Random();
+  protected static final Random RANDOM = new SecureRandom();
 
   @BeforeEach
   public void setUp() throws Exception {

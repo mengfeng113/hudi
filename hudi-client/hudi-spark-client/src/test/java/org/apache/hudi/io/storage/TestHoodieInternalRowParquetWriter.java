@@ -18,6 +18,7 @@
 
 package org.apache.hudi.io.storage;
 
+import java.security.SecureRandom;
 import org.apache.hudi.common.bloom.BloomFilter;
 import org.apache.hudi.common.bloom.BloomFilterFactory;
 import org.apache.hudi.common.testutils.HoodieTestDataGenerator;
@@ -46,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class TestHoodieInternalRowParquetWriter extends HoodieClientTestHarness {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   @BeforeEach
   public void setUp() throws Exception {

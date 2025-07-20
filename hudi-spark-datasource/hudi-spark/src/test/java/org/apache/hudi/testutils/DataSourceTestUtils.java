@@ -18,6 +18,7 @@
 
 package org.apache.hudi.testutils;
 
+import java.security.SecureRandom;
 import org.apache.hudi.common.util.FileIOUtils;
 
 import org.apache.avro.Schema;
@@ -46,7 +47,7 @@ public class DataSourceTestUtils {
   }
 
   public static List<Row> generateRandomRows(int count) {
-    Random random = new Random();
+    Random random = new SecureRandom();
     List<Row> toReturn = new ArrayList<>();
     List<String> partitions = Arrays.asList(new String[] {DEFAULT_FIRST_PARTITION_PATH, DEFAULT_SECOND_PARTITION_PATH, DEFAULT_THIRD_PARTITION_PATH});
     for (int i = 0; i < count; i++) {
