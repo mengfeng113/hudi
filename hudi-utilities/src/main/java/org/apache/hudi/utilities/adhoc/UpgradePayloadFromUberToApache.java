@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities.adhoc;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.hudi.common.fs.FSUtils;
 import org.apache.hudi.common.model.HoodieTableType;
 import org.apache.hudi.common.table.HoodieTableConfig;
@@ -57,7 +58,7 @@ public class UpgradePayloadFromUberToApache implements Serializable {
   public void run() throws IOException {
     String basePath = null;
     try (BufferedReader reader = new BufferedReader(new FileReader(cfg.inputPath))) {
-      basePath = reader.readLine();
+      basePath = BoundedLineReader.readLine(reader, 5_000_000);
     } catch (IOException e) {
       LOG.error("Read from path: " + cfg.inputPath + " error.", e);
     }

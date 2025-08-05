@@ -18,6 +18,7 @@
 
 package org.apache.hudi.common.config;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.log4j.LogManager;
@@ -101,7 +102,7 @@ public class DFSPropertiesConfiguration {
   public void addProperties(BufferedReader reader) throws IOException {
     try {
       String line;
-      while ((line = reader.readLine()) != null) {
+      while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
         if (line.startsWith("#") || line.equals("") || !line.contains("=")) {
           continue;
         }

@@ -18,6 +18,7 @@
 
 package org.apache.hudi.utilities.testutils;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.FileInputStream;
 
 import org.apache.hudi.client.common.HoodieSparkEngineContext;
@@ -197,7 +198,7 @@ public class UtilitiesTestBase {
           new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream(testResourcePath)));
       StringBuffer sb = new StringBuffer();
       String line;
-      while ((line = reader.readLine()) != null) {
+      while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
         sb.append(line + "\n");
       }
       return sb.toString();
@@ -208,7 +209,7 @@ public class UtilitiesTestBase {
           new BufferedReader(new InputStreamReader(new FileInputStream(absolutePathForResource)));
       StringBuffer sb = new StringBuffer();
       String line;
-      while ((line = reader.readLine()) != null) {
+      while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
         sb.append(line + "\n");
       }
       return sb.toString();
